@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+    name: myreplication-controller
+spec:
+    replicas: 2
+    selector: 
+        Myapp: firstpod
+    template:
+      metadata: 
+          name: mynginx
+          labels:
+            Myapp: firstpod
+      spec:
+          containers:
+              - image: nginx
+                name: mynignx
+                ports:
+                  - containerPort: 80
+                    protocol: TCP

@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: mydeploy
+spec:
+    minReadySeconds: 10
+    strategy: 
+        type: RollingUpdate
+        rollingUpdate:
+                maxSurge: 3
+                maxUnavailable: 3
+    replicas: 10
+    selector:
+      matchLabels:
+        Myapp: firstpod
+    template:
+      metadata: 
+          name: mynginx
+          labels:
+            Myapp: firstpod
+      spec:
+          containers:
+              - image: nginx
+                name: nginx
+                ports:
+                  - containerPort: 80
+                    protocol: TCP
