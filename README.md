@@ -1,6 +1,6 @@
 Create K8s Cluster and Configure Master and NodeS
 install kubeadm install k8s
-
+```
 # Install Docker CE on all servers
 ## Set up the repository:
 ### Install packages to allow apt to use a repository over HTTPS
@@ -81,3 +81,4 @@ kubectl get pods
 kubectl describe pod/hello-pod
 kubectl delete pod/hello-pod
 
+```
