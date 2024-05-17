@@ -32,6 +32,10 @@ cat > /etc/docker/daemon.json <<EOF
 }
 EOF
 
+sudo apt remove containerd
+sudo apt-get update && sudo apt install containerd.io
+rm /etc/containerd/config.toml
+systemctl restart containerd
 mkdir -p /etc/systemd/system/docker.service.d
 
 # Restart docker.
