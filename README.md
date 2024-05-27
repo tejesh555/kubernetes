@@ -37,7 +37,7 @@ sudo apt-mark hold kubelet kubeadm kubectl
 
 
 Configure Master and NodeS
-# kubeadm init ( on master as root user)
+kubeadm init --pod-network-cidr=10.244.0.0/16 ( on master as root user)
 
 On master:
 
@@ -53,7 +53,8 @@ kubeadm join 172.31.53.56:6443 --token cbjmz6.bpgu7hn3t74l6b3s \
 
 on Master:
 
-kubectl apply -f https://github.com/weaveworks/weave/releases/download/v2.8.1/weave-daemonset-k8s.yaml
+kubectl apply -f https://github.com/flannel-io/flannel/releases/latest/download/kube-flannel.yml
+
 
 kubectl get nodes
 kubectl get pods --all-namespaces
